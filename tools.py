@@ -2,7 +2,7 @@ from langchain_google_genai import GoogleGenerativeAI
 from langchain_perplexity import ChatPerplexity
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
-from models import ModelState,Questions,MODEL
+from models import ModelState,Questions,Question
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser,PydanticOutputParser
 
@@ -43,3 +43,13 @@ def question_setter(state: ModelState):
     
     chain = prompt | model | parser
     return chain.invoke({"topic": state.topic, "level": state.level})
+
+def explain_answer(question:Question):
+    prompt=PromptTemplate(template="""You are a teacher you explain answers to your students.\n
+                           Given the question :{question} \n
+                          explain why the answer to the question is {answer} \n
+                          answer must contain proper reasoning and supporting facts.\n
+                          Answer in brief.""",input_variables=["question","answer"])
+    chain=prompt | model | StrOutputParser()
+    return chain.invoke({"question":question.question,"answer":question.answer})
+    

@@ -294,3 +294,127 @@ Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
 
 Score: 7/10
 
+
+=== New Test Attempt ===
+Model: google|gemini-2.5-pro
+Topic: hssc cet haryana gk static
+
+Q1. The National Dairy Research Institute (NDRI), a premier institution in Asia for dairy research, is located in which city of Haryana?
+Your answer: Hisar
+Correct answer: Karnal
+Source: HSSC PYQ Based
+
+Q2. What is the name of the highest peak of the Morni Hills, which is also the highest point in Haryana?
+Your answer: Dhosi Hill
+Correct answer: Karoh Peak
+Source: HSSC PYQ Based
+
+Q3. The famous Battle of Karnal in 1739 was fought between the Mughal Emperor Muhammad Shah and whom?
+Your answer: Ahmad Shah Abdali
+Correct answer: Nader Shah
+Source: HSSC PYQ Based
+
+Q4. Which city in Haryana is renowned as the 'City of Weavers' and is a major global centre for textile recycling, earning it the nickname 'Cast-Off Capital'?
+Your answer: Sonipat
+Correct answer: Panipat
+Source: HSSC PYQ Based
+
+Q5. The Yamuna river enters Haryana near the Kalesar forest in the Yamunanagar district and forms the eastern boundary of Haryana with which state?
+Your answer: Punjab
+Correct answer: Uttar Pradesh
+Source: HSSC PYQ Based
+
+Q6. Who among the following personalities from Haryana was a member of the Constituent Assembly of India and also served as the Chief Minister of Punjab?
+Your answer: Chaudhary Devi Lal
+Correct answer: Chaudhary Ranbir Singh Hooda
+Source: AI generated
+
+Q7. Who is often hailed as the 'Shakespeare of Haryana' or 'Kalidas of Haryana' for his pioneering contributions to the Haryanvi folk theatre form known as 'Saang'?
+Your answer: Pandit Lakhmichand
+Correct answer: Deepchand Bahman
+Source: Haryana Literary History
+
+Q8. On the recommendation of which committee was the state of Haryana formed on 1st November 1966?
+Your answer: J.C. Shah Commission
+Correct answer: Sardar Hukam Singh Parliamentary Committee
+Source: HSSC PYQ Based
+
+Q9. Which archaeological site in Haryana is considered one of the largest Indus Valley Civilization sites, where the world's oldest known jewellery-making factory (dating back 5000 years) was discovered?
+Your answer: Banawali
+Correct answer: Rakhigarhi
+Source: HSSC PYQ Based
+
+Q10. The 'Loor' dance, a famous folk dance of Haryana, is predominantly performed by women in the Bagar region during which festival?
+Your answer: Teej
+Correct answer: Holi
+Source: Haryana Culture Dept. Data
+
+Score: 0/10
+
+
+=== New Test Attempt ===
+Model: google|gemini-2.5-pro
+Topic: hssc cet haryana gk static
+
+Q1. The Second Battle of Panipat, fought in 1556, was a decisive conflict between the Mughal forces of Akbar and which ruler?
+Your answer: Sher Shah Suri
+Correct answer: Hemu (Hemchandra Vikramaditya)
+Source: HSSC PYQ Based
+Explanation: The Second Battle of Panipat (November 5, 1556) was fought between the forces of the Mughal emperor Akbar, led by his regent Bairam Khan, and the army of Hemu, the Hindu king of Delhi. Hemu's defeat re-established Mughal rule in India.
+
+Q2. How many seats are reserved for Scheduled Castes (SC) in the 90-member Haryana Vidhan Sabha (Legislative Assembly)?
+Your answer: 15
+Correct answer: 17
+Source: HSSC PYQ Based
+Explanation: The Haryana Legislative Assembly has a total of 90 seats. Out of these, 17 constituencies are reserved for candidates belonging to the Scheduled Castes. This is a crucial fact for state administrative knowledge.
+
+Q3. The seasonal river Ghaggar enters Haryana from which district?
+Your answer: Ambala
+Correct answer: Panchkula
+Source: HSSC PYQ Based
+Explanation: The Ghaggar river, which originates in the Shivalik Hills of Himachal Pradesh, enters the plains of Haryana near Kalka in the Panchkula district.
+
+Q4. Who was the first Chief Minister of Haryana?
+Your answer: Rao Birender Singh
+Correct answer: Pt. Bhagwat Dayal Sharma
+Source: HSSC PYQ Based
+Explanation: After Haryana was formed as a separate state on November 1, 1966, Pandit Bhagwat Dayal Sharma of the Indian National Congress became its first Chief Minister.
+
+Q5. The Kalesar National Park, located in the foothills of the Shivalik range, is primarily known for its dense forest of which tree species?
+Your answer: Teak
+Correct answer: Sal
+Source: HSSC Pattern
+Explanation: Kalesar National Park in the Yamunanagar district is renowned for its rich biodiversity and is particularly famous for its dense Sal (Shorea robusta) forest. It is also a significant habitat for the Red junglefowl.
+
+Q6. Rakhigarhi, one of the largest and most significant Indus Valley Civilization sites, is located in which district of Haryana?
+Your answer: Fatehabad
+Correct answer: Hisar
+Source: HSSC PYQ Based
+Explanation: Rakhigarhi, located in the Hisar district, is considered one of the five largest urban sites of the Harappan civilization. Ongoing excavations continue to reveal important insights into this ancient culture.
+
+Q7. On the recommendation of which parliamentary committee was the Shah Commission formed, which ultimately led to the creation of Haryana?
+Your answer: Sardar Hukam Singh Committee
+Correct answer: Sardar Hukam Singh Committee
+Source: HSSC PYQ Based
+Explanation: The creation of Haryana was a result of the Punjabi Suba movement. The Government of India, in 1966, formed the Sardar Hukam Singh Parliamentary Committee to consider the demand. On the committee's recommendation, the Shah Commission was established to draw the boundaries, leading to the formation of Haryana on November 1, 1966.
+
+Q8. Which of the following districts does NOT fall under the Ambala administrative division of Haryana?
+Your answer: Panchkula
+Correct answer: Kaithal
+Source: HSSC Pattern
+Explanation: Haryana is divided into 6 administrative divisions. The Ambala division comprises Ambala, Kurukshetra, Panchkula, and Yamunanagar districts. Kaithal district falls under the Karnal division.
+
+Q9. The Deenbandhu Chhotu Ram Thermal Power Plant (DCRTPP) is situated in which district of Haryana?
+Your answer: Panipat
+Correct answer: Yamunanagar
+Source: HSSC Pattern
+Explanation: The 600 MW Deenbandhu Chhotu Ram Thermal Power Plant is located in Yamunanagar. It was the first power project in Haryana to be handed over to a private developer for operation and maintenance.
+
+Q10. The famous 'Loor' folk dance of Haryana, primarily performed by girls, is associated with which festival?
+Your answer: Teej
+Correct answer: Holi
+Source: HSSC PYQ Based
+Explanation: The Loor dance is performed in the Bangar region of Haryana during the Phalguna month, coinciding with the festival of Holi. The word 'Loor' in the local dialect means 'girl'.
+
+Score: 1/10
+

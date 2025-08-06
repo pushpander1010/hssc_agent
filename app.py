@@ -1,45 +1,39 @@
 import streamlit as st
 from typing import Optional, Literal
 from pydantic import BaseModel, Field
-from models import ModelState
+from models import ModelState, Question
 from tools import question_setter
+from langchain.prompts import PromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_google_genai import GoogleGenerativeAI
+from langchain_perplexity import ChatPerplexity
+from langchain_groq import ChatGroq
 import random
 import os
 
 HISTORY_FILE = "history.txt"
 
 # --------------------------
-# Streamlit Page Setup
+# Page Setup
 # --------------------------
 st.set_page_config(page_title="📝 Haryana CET Practice Test", layout="centered")
 st.title("📝 Haryana CET Practice Test")
 
-# ----- Topic & Model Options -----
 TOPIC_OPTIONS = [
     "hssc cet haryana gk static",
-    "hssc cet haryana history",
-    "hssc cet haryana geography",
-    "hssc cet haryana economy",
-    "hssc cet haryana culture",
-    "hssc cet indian polity",
-    "hssc cet indian history",
-    "hssc cet indian geography",
-    "hssc cet general science",
-    "hssc cet current affairs",
-    "hssc cet sports",
-    "hssc cet awards and honours",
-    "hssc cet important days",
-    "hssc cet books and authors",
-    "hssc cet hindi",
-    "hssc cet aptitude",
-    "hssc cet reasoning",
-    "hssc cet english",
-    "hssc cet computers",
-    "hssc cet JE mechanical",
-    "hssc cet JE civil",
-    "hssc cet environmental studies",
-    "hssc cet traffic rules",
-    "hssc cet rural haryana",
+    "haryana history",
+    "haryana geography",
+    "haryana economy",
+    "haryana culture",
+    "indian polity",
+    "indian history",
+    "indian geography",
+    "general science",
+    "current affairs",
+    "sports",
+    "awards and honours",
+    "important days",
+    "books and authors"
 ]
 
 MODEL_OPTIONS = [
@@ -51,25 +45,42 @@ MODEL_OPTIONS = [
     "groq|gemma-7b-it"
 ]
 
-# ----- Top-right Dropdowns -----
+# --------------------------
+# Top Selectors
+# --------------------------
 with st.container():
     col1, col2 = st.columns([4, 2])
     with col1:
-        topic_selected = st.selectbox(
-            "Select Topic",
-            options=TOPIC_OPTIONS,
-            index=0,
-            key="topic_selector"
-        )
+        topic_selected = st.selectbox("Select Topic", options=TOPIC_OPTIONS, index=0, key="topic_selector")
     with col2:
-        model_selected = st.selectbox(
-            "Select Model",
-            options=MODEL_OPTIONS,
-            index=0,
-            key="model_selector"
-        )
+        model_selected = st.selectbox("Select Model", options=MODEL_OPTIONS, index=0, key="model_selector")
 
-# ----- History Mode Toggle -----
+# --------------------------
+# Detailed Explanation Generator
+# --------------------------
+def explain_answer(question: Question):
+    provider, model_name = st.session_state.get("model_selector").split("|")
+    
+    if provider == "google":
+        model = GoogleGenerativeAI(temperature=0.3, model=model_name)
+    elif provider == "perplexity":
+        model = ChatPerplexity(temperature=0.3, model=model_name)
+    elif provider == "groq":
+        model = ChatGroq(temperature=0.3, model=model_name)
+    else:
+        raise ValueError("Unsupported model provider")
+
+    prompt = PromptTemplate(
+        template="""You are a teacher. Given the question:\n\n{question}\n\nExplain why the correct answer is:\n\n{answer}\n\nUse detailed but clear reasoning with facts and examples.""",
+        input_variables=["question", "answer"]
+    )
+    
+    chain = prompt | model | StrOutputParser()
+    return chain.invoke({"question": question.question, "answer": question.answer})
+
+# --------------------------
+# History View
+# --------------------------
 if 'view_history' not in st.session_state:
     st.session_state.view_history = False
 
@@ -88,22 +99,22 @@ if st.session_state.view_history:
     if st.button("🔙 Back to Test"):
         st.session_state.view_history = False
         st.rerun()
-    st.stop()  # Stop here to avoid rendering quiz
+    st.stop()
 
 st.markdown("### 10 Questions | Select the correct answer")
 
 # --------------------------
-# Function to Load New Questions
+# Load Questions
 # --------------------------
 def get_new_questions():
-    init_state = ModelState(
+    state = ModelState(
         topic=st.session_state.get("topic_selector"),
         model=st.session_state.get("model_selector")
     )
-    return question_setter(init_state).questions
+    return question_setter(state).questions
 
 # --------------------------
-# Session State Initialization
+# Session State
 # --------------------------
 if 'started' not in st.session_state:
     st.session_state.started = False
@@ -117,7 +128,7 @@ if 'current_questions' not in st.session_state:
     st.session_state.current_questions = []
 
 # --------------------------
-# Start Test Button
+# Start Test
 # --------------------------
 if not st.session_state.started:
     if st.button("🚀 Start Test"):
@@ -139,8 +150,7 @@ if st.session_state.started and not st.session_state.submitted:
             options=q.options,
             key=f"q_{i}"
         )
-        # Bottom-right source info
-        col1, col2, col3 = st.columns([6, 1, 3])
+        col1, col2, col3 = st.columns([3, 3, 3])
         with col3:
             st.markdown(
                 f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>",
@@ -148,29 +158,24 @@ if st.session_state.started and not st.session_state.submitted:
             )
         st.markdown("---")
 
-    # Submit button
     if st.button("✅ Submit"):
         correct = 0
         with open(HISTORY_FILE, "a", encoding="utf-8") as f:
-            f.write(f"\n=== New Test Attempt ===\n")
-            f.write(f"Model: {st.session_state.model_selector}\n")
-            f.write(f"Topic: {st.session_state.topic_selector}\n\n")
+            f.write(f"\n=== New Test Attempt ===\nModel: {st.session_state.model_selector}\nTopic: {st.session_state.topic_selector}\n\n")
             for i, q in enumerate(st.session_state.current_questions):
                 selected = st.session_state.selected_answers.get(i)
                 if selected == q.answer:
                     correct += 1
                 f.write(f"Q{i+1}. {q.question}\n")
-                f.write(f"Your answer: {selected}\n")
                 f.write(f"Correct answer: {q.answer}\n")
-                f.write(f"Source: {q.source}\n\n")
-            f.write(f"Score: {correct}/10\n\n")
+                f.write(f"Explanation: {q.explanation or 'N/A'}\n\n")
 
         st.session_state.score = correct
         st.session_state.submitted = True
         st.rerun()
 
 # --------------------------
-# Show Results
+# Show Results + Explanation
 # --------------------------
 if st.session_state.submitted:
     st.success(f"🎉 You scored {st.session_state.score} out of 10")
@@ -184,16 +189,29 @@ if st.session_state.submitted:
         st.markdown(f"- Correct answer: ✅ `{q.answer}`")
         st.markdown(f"{'✔️ Correct' if is_correct else '❌ Incorrect'}")
 
-        # Source at bottom-right again
-        col1, col2, col3 = st.columns([6, 1, 3])
+        # Show built-in explanation
+        if q.explanation:
+            st.info(f"📘 Explanation: {q.explanation}")
+
+        # Detailed explanation button + source
+        col1, col2, col3 = st.columns([3, 3, 3])
+        with col1:
+            if st.button(f"🧠 Detailed Explanation Q{i+1}", key=f"explain_btn_{i}"):
+                st.session_state[f"show_explanation_q{i}"] = True
         with col3:
             st.markdown(
                 f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>",
                 unsafe_allow_html=True
             )
+
+        # Show detailed explanation if requested
+        if st.session_state.get(f"show_explanation_q{i}", False):
+            with st.spinner("Generating detailed explanation..."):
+                detailed = explain_answer(q)
+                st.success(f"🧠 Detailed Explanation: {detailed}")
+
         st.markdown("---")
 
-    # Retake button
     if st.button("🔁 Retake Test"):
         st.session_state.started = True
         st.session_state.submitted = False
