@@ -1,7 +1,7 @@
 import streamlit as st
 from typing import Optional, Literal
 from pydantic import BaseModel, Field
-from models import ModelState,MODEL
+from models import ModelState
 from tools import question_setter
 import random
 import os
@@ -14,20 +14,57 @@ HISTORY_FILE = "history.txt"
 st.set_page_config(page_title="📝 Haryana CET Practice Test", layout="centered")
 st.title("📝 Haryana CET Practice Test")
 
-# ----- Top-right Model Selector -----
+# ----- Topic & Model Options -----
+TOPIC_OPTIONS = [
+    "hssc cet haryana gk static",
+    "hssc cet haryana history",
+    "hssc cet haryana geography",
+    "hssc cet haryana economy",
+    "hssc cet haryana culture",
+    "hssc cet indian polity",
+    "hssc cet indian history",
+    "hssc cet indian geography",
+    "hssc cet general science",
+    "hssc cet current affairs",
+    "hssc cet sports",
+    "hssc cet awards and honours",
+    "hssc cet important days",
+    "hssc cet books and authors",
+    "hssc cet hindi",
+    "hssc cet aptitude",
+    "hssc cet reasoning",
+    "hssc cet english",
+    "hssc cet computers",
+    "hssc cet JE mechanical",
+    "hssc cet JE civil",
+    "hssc cet environmental studies",
+    "hssc cet traffic rules",
+    "hssc cet rural haryana",
+]
+
+MODEL_OPTIONS = [
+    "google|gemini-2.5-pro",
+    "google|gemini-2.5-flash",
+    "perplexity|sonar",
+    "groq|llama3-70b-8192",
+    "groq|mixtral-8x7b-32768",
+    "groq|gemma-7b-it"
+]
+
+# ----- Top-right Dropdowns -----
 with st.container():
-    col1, col2 = st.columns([6, 2])
+    col1, col2 = st.columns([4, 2])
+    with col1:
+        topic_selected = st.selectbox(
+            "Select Topic",
+            options=TOPIC_OPTIONS,
+            index=0,
+            key="topic_selector"
+        )
     with col2:
         model_selected = st.selectbox(
             "Select Model",
-            options=[
-                "google|gemini-2.5-pro",
-                "google|gemini-2.5-flash",
-                "perplexity|sonar",
-                "groq|llama3-70b-8192",
-                "groq|mixtral-8x7b-32768",
-                "groq|gemma-7b-it"
-            ],
+            options=MODEL_OPTIONS,
             index=0,
             key="model_selector"
         )
@@ -59,7 +96,10 @@ st.markdown("### 10 Questions | Select the correct answer")
 # Function to Load New Questions
 # --------------------------
 def get_new_questions():
-    init_state = ModelState(model=st.session_state.get("model_selector"))
+    init_state = ModelState(
+        topic=st.session_state.get("topic_selector"),
+        model=st.session_state.get("model_selector")
+    )
     return question_setter(init_state).questions
 
 # --------------------------
@@ -102,14 +142,19 @@ if st.session_state.started and not st.session_state.submitted:
         # Bottom-right source info
         col1, col2, col3 = st.columns([6, 1, 3])
         with col3:
-            st.markdown(f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>",
+                unsafe_allow_html=True
+            )
         st.markdown("---")
 
     # Submit button
     if st.button("✅ Submit"):
         correct = 0
         with open(HISTORY_FILE, "a", encoding="utf-8") as f:
-            f.write(f"\n=== New Test Attempt ===\nModel: {st.session_state.model_selector}\n\n")
+            f.write(f"\n=== New Test Attempt ===\n")
+            f.write(f"Model: {st.session_state.model_selector}\n")
+            f.write(f"Topic: {st.session_state.topic_selector}\n\n")
             for i, q in enumerate(st.session_state.current_questions):
                 selected = st.session_state.selected_answers.get(i)
                 if selected == q.answer:
@@ -142,7 +187,10 @@ if st.session_state.submitted:
         # Source at bottom-right again
         col1, col2, col3 = st.columns([6, 1, 3])
         with col3:
-            st.markdown(f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='text-align: right; font-size: 0.8em; color: gray;'>[Source: {q.source}]</div>",
+                unsafe_allow_html=True
+            )
         st.markdown("---")
 
     # Retake button

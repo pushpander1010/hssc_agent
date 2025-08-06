@@ -237,3 +237,60 @@ Source: Haryana GK Marathon by Siwach Sir[2]
 
 Score: 7/10
 
+
+=== New Test Attempt ===
+Model: perplexity|sonar
+Topic: hssc cet traffic rules
+
+Q1. What is the main focus of the Haryana CET exam?
+Your answer: Recruitment for state government jobs
+Correct answer: Recruitment for state government jobs
+Source: https://www.youtube.com/watch?v=C0FcWknZc-0
+
+Q2. In which year was the National Beekeeping and Honey Mission (NBHM) launched in Haryana?
+Your answer: 2015
+Correct answer: 2019
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q3. What is the main objective of the 'Mhara Gaon, Jagmag Gaon' scheme?
+Your answer: Promote rural education
+Correct answer: Provide continuous electricity supply to villages
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q4. Which agricultural scheme launched in 2015 aims to improve irrigation in Haryana?
+Your answer: Pradhan Mantri Krishi Sinchayee Yojana
+Correct answer: Pradhan Mantri Krishi Sinchayee Yojana
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q5. Which festival is famous in Karnal district of Haryana and held annually in September?
+Your answer: Gaur Mela
+Correct answer: Gaur Mela
+Source: https://www.youtube.com/watch?v=BzhVxQGuafY
+
+Q6. Haryana is a leading state in India for the production of which two major crops?
+Your answer: Wheat and Rice
+Correct answer: Wheat and Rice
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q7. What is the average of all prime numbers between 30 and 50?
+Your answer: 39.8
+Correct answer: 39.8
+Source: https://www.youtube.com/watch?v=BzhVxQGuafY
+
+Q8. As of January 2022, how many villages were electrified under the 'Mhara Gaon, Jagmag Gaon' scheme?
+Your answer: 3,216
+Correct answer: 5,569
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q9. Which of the following is a significant contribution of Haryana to India's agricultural sector?
+Your answer: Beekeeping industry
+Correct answer: Beekeeping industry
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Q10. Which city is the capital of Haryana?
+Your answer: Chandigarh
+Correct answer: Chandigarh
+Source: https://www.adda247.com/exams/haryana/haryana-cet-special-gk/
+
+Score: 7/10
+
