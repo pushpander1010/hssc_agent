@@ -8,7 +8,7 @@ from langchain_core.output_parsers import StrOutputParser,PydanticOutputParser
 
 load_dotenv()
 
-model=GoogleGenerativeAI(temperature=0.3,model="gemini-2.5-pro")
+model=GoogleGenerativeAI(temperature=1.8,model="gemini-2.5-pro")
 
 def question_setter(state: ModelState):
     if state.model is None:
