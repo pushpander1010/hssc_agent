@@ -21,19 +21,28 @@ st.title("📝 Haryana CET Practice Test")
 
 TOPIC_OPTIONS = [
     "hssc cet haryana gk static",
-    "haryana history",
-    "haryana geography",
-    "haryana economy",
-    "haryana culture",
-    "indian polity",
-    "indian history",
-    "indian geography",
-    "general science",
-    "current affairs",
-    "sports",
-    "awards and honours",
-    "important days",
-    "books and authors"
+    "hssc cet haryana history",
+    "hssc cet haryana geography",
+    "hssc cet haryana economy",
+    "hssc cet haryana culture",
+    "hssc cet indian polity",
+    "hssc cet indian history",
+    "hssc cet indian geography",
+    "hssc cet general science",
+    "hssc cet current affairs",
+    "hssc cet sports",
+    "hssc cet awards and honours",
+    "hssc cet important days",
+    "hssc cet books and authors",
+    "hssc cet hindi",
+    "hssc cet reasoning",
+    "hssc cet aptitude",
+    "hssc cet traffic and road awareness",
+    "hssc cet engish",
+    "hssc cet environmental studies",
+    "hssc cet computers",
+    "hssc cet rural haryana",
+    "hssc cet haryana economy"
 ]
 
 MODEL_OPTIONS = [
